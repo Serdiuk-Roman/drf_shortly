@@ -34,10 +34,14 @@ Cервис для сокращения гиперссылок
 
     pip install -r requirements.txt
 
-База даних
+База данных
 
     python manage.py makemigrations
+
+
     python manage.py migrate
+
+
     python manage.py createsuperuser
 
 Старт
@@ -45,4 +49,5 @@ Cервис для сокращения гиперссылок
     python manage.py runserver
 
 Сылка на api
+
 [http://127.0.0.1:8000/api/](http://127.0.0.1:8000/api/)
