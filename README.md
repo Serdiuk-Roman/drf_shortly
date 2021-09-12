@@ -1,4 +1,4 @@
-# wwf (Wake Wood Flask)
+# DRF Shortly
 
 ## Base
 
@@ -35,13 +35,12 @@ Cервис для сокращения гиперссылок
     pip install -r requirements.txt
 
 База даних
-~~~python3
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
-~~~
 
-Перший запуск
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py createsuperuser
+
+Старт
 
     python manage.py runserver
 
