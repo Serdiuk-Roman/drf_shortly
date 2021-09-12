@@ -21,6 +21,5 @@ class ShortLinkInfo(models.Model):
         ShortLink,
         on_delete=models.CASCADE,
         related_name='info')
-    guest = models.CharField(max_length=32, blank=True, null=True)
-    last_datetime = models.DateTimeField(auto_now=True)
-    click_count = models.PositiveSmallIntegerField(default=0)
+    redirect_count = models.PositiveSmallIntegerField(default=0)
+    last_update = models.DateTimeField(auto_now=True)

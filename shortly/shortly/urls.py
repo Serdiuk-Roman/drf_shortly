@@ -20,6 +20,7 @@ from rest_framework.authtoken import views as drf_views
 # from rest_framework import routers
 
 # from shortly_app.views import URLList
+from shortly_app.views import short_link_redirect
 
 
 # router = routers.DefaultRouter()
@@ -28,6 +29,11 @@ from rest_framework.authtoken import views as drf_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('shortly_app.urls')),
+    path(
+        'redirect/<str:short_url>/',
+        short_link_redirect,
+        name='link_redirect'
+    ),
     # path('api-auth/', include('rest_framework.urls')),
-    path('api-token-auth/', drf_views.obtain_auth_token)
+    path('api-token-auth/', drf_views.obtain_auth_token),
 ]
