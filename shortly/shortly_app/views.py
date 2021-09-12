@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
 
-from rest_framework.generics import get_object_or_404
 from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -16,9 +16,6 @@ from .models import ShortLink, ShortLinkInfo
 from .serializers import ShortLinkListSerializer, ShortLinkDetailSerializer
 from .permissions import IsAuthor
 from .service import get_client_ip, base63_encode
-
-# from rest_framework.decorators import api_view
-# from rest_framework.reverse import reverse
 
 
 class ShortLinkView(CreateAPIView, ListAPIView):
@@ -69,7 +66,6 @@ def short_link_redirect(request, short_url):
         short_url=short_url,
         deleted=False
     )
-
     try:
         info = ShortLinkInfo.objects.get(link=data)
     except ObjectDoesNotExist:
@@ -80,10 +76,3 @@ def short_link_redirect(request, short_url):
     info.redirect_count += 1
     info.save()
     return redirect(data.url_target)
-
-
-# @api_view(['GET'])
-# def api_root(request, format=None):
-#     return Response({
-#         'shortly': reverse('shortly-list', request=request, format=format)
-#     })
