@@ -64,16 +64,20 @@ class ShortLinkDetailView(APIView):
 
 
 def short_link_redirect(request, short_url):
-    data = get_object_or_404(ShortLink, short_url=short_url)
+    data = get_object_or_404(
+        ShortLink,
+        short_url=short_url,
+        deleted=False
+    )
 
     try:
         info = ShortLinkInfo.objects.get(link=data)
     except ObjectDoesNotExist:
         info = ShortLinkInfo(
             link=data,
-            click_count=0
+            redirect_count=0
         )
-    info.click_count += 1
+    info.redirect_count += 1
     info.save()
     return redirect(data.url_target)
 
